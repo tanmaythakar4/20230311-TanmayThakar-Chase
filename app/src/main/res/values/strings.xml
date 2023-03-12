@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="nav_title_today">Today</string>
+    <string name="nav_title_weekly">Weekly</string>
+    <string name="title_humidity">Humidity</string>
+    <string name="title_dew_point">Dew point</string>
+    <string name="title_wind">Wind</string>
+    <string name="title_visibility">Visibility</string>
+</resources>
