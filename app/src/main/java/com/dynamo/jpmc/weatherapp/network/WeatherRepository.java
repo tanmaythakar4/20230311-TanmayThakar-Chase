@@ -23,7 +23,7 @@ public class WeatherRepository {
     }
 
     public void getWeatherForecast(@NonNull double lat, @NonNull double lng, MutableLiveData<Resource<WeatherForecast>> liveData) {
-        Call<WeatherForecast> call = weatherAPI.getWeatherForecast(lat, lng, BuildConfig.WEATHER_API_KEY);
+        Call<WeatherForecast> call = weatherAPI.getWeatherForecast(lat, lng,ApiConstants.UNIT,BuildConfig.WEATHER_API_KEY);
         call.enqueue(new Callback<WeatherForecast>() {
             @Override
             public void onResponse(Call<WeatherForecast> call, Response<WeatherForecast> response) {

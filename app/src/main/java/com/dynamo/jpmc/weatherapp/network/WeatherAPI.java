@@ -13,5 +13,5 @@ import retrofit2.http.Query;
  */
 public interface WeatherAPI {
     @GET("/data/3.0/onecall")
-    Call<WeatherForecast> getWeatherForecast(@NonNull @Query("lat") double latitude, @NonNull @Query("lon") double longitude, @Query("appid") String apiKey);
+    Call<WeatherForecast> getWeatherForecast(@NonNull @Query("lat") double latitude, @NonNull @Query("lon") double longitude, @Query("units") String units, @Query("appid") String apiKey);
 }

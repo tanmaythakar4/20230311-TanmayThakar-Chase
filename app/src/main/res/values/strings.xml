@@ -1,9 +1,13 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">WeatherApp</string>
     <string name="nav_title_today">Today</string>
     <string name="nav_title_weekly">Weekly</string>
     <string name="title_humidity">Humidity</string>
-    <string name="title_dew_point">Dew point</string>
+    <string name="title_feels_like">Feels like</string>
     <string name="title_wind">Wind</string>
-    <string name="title_visibility">Visibility</string>
+    <string name="title_uv_index">UV Index</string>
+    <string name="today">today</string>
+    <string name="format_temperature"><xliff:g id="temp">%1.0f</xliff:g>\u00B0</string>
+    <string name="format_min_max_temperature"><xliff:g id="temp">%1.0f / %2.0f</xliff:g>\u00B0</string>
+    <string name="format_wind_mph"> <xliff:g id="speed">%1$1.0f</xliff:g> mph</string>
 </resources>
