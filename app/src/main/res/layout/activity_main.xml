@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.dynamo.jpmc.weatherapp.ui.WeatherHomeFragment"
+        android:name="com.dynamo.jpmc.weatherapp.ui.current.WeatherHomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"

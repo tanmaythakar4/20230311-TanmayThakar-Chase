@@ -1,4 +1,4 @@
-package com.dynamo.jpmc.weatherapp.ui;
+package com.dynamo.jpmc.weatherapp.ui.current;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +36,8 @@ public class WeeklyWeatherAdapter extends RecyclerView.Adapter<WeeklyWeatherAdap
     }
 
     public void setData(@NonNull List<Daily> weeklyWeather) {
-        this.weeklyWeather = weeklyWeather.stream().filter(hourly -> (hourly.getDt()*1000)>System.currentTimeMillis()).collect(Collectors.toList());;
+        this.weeklyWeather = weeklyWeather.stream().filter(hourly -> (hourly.getDt() * 1000) > System.currentTimeMillis()).collect(Collectors.toList());
+        ;
         Collections.sort(weeklyWeather, (d1, d2) -> (new Date(d1.getDt() * 1000).compareTo(new Date(d2.getDt() * 1000))));
         notifyDataSetChanged();
     }

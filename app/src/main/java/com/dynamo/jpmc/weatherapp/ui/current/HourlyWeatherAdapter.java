@@ -1,4 +1,4 @@
-package com.dynamo.jpmc.weatherapp.ui;
+package com.dynamo.jpmc.weatherapp.ui.current;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import com.dynamo.jpmc.weatherapp.model.Hourly;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;

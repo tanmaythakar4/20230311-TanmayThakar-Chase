@@ -1,4 +1,4 @@
-package com.dynamo.jpmc.weatherapp.ui;
+package com.dynamo.jpmc.weatherapp.ui.current;
 
 import android.content.Context;
 import android.os.Bundle;

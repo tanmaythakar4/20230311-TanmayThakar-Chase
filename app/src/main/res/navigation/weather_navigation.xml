@@ -6,7 +6,15 @@
     app:startDestination="@id/navigation_today">
     <fragment
         android:id="@+id/navigation_today"
-        android:name="com.dynamo.jpmc.weatherapp.ui.WeatherHomeFragment"
+        android:name="com.dynamo.jpmc.weatherapp.ui.current.WeatherHomeFragment"
         android:label="fragment_today"
-        tools:layout="@layout/fragment_weather_home" />
+        tools:layout="@layout/fragment_weather_home" >
+        <action
+            android:id="@+id/action_navigation_today_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.dynamo.jpmc.weatherapp.ui.search.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>
