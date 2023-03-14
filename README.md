@@ -2,17 +2,22 @@
 
 # Coding Challenge: - *Weather App*
 
-**Weather App** that allows users to get the Current Weather data and Forecast for next 24 hour and next week
+**Weather App** is simple andorid app that allows users to get the Current Weather data and Forecast for next 24 hour and next week using [OpenWeatherMap](https://openweathermap.org/api/one-call-3).
 
 Submitted by: **Tanmay Thakar**
 
-Time spent: **8** hours spent in total for the first phase
+Time spent: **~7** hours spent in total for the first phase
 
 ## User Stories
 
 The following **required** functionality is completed:
 
 * [*] With First Phase user can search their city and can see the Weather data 
+
+## Architecture
+The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
+
+![Architecture](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 
 ## Video Walkthrough
