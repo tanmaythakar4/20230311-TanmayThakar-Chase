@@ -39,7 +39,7 @@ public class WeatherViewModel extends ViewModel {
 
     public WsLocation getWsLocation() {
         if (wsLocation == null) {
-            wsLocation = new WsLocation(41.640640, -72.683113, "Rocky Hill, USA");
+            wsLocation = new WsLocation(41.640640, -72.683113, "Rocky Hill");
         }
         return wsLocation;
     }

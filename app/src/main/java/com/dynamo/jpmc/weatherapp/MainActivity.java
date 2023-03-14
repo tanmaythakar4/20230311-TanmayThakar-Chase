@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Update the Current Location {@link WsLocation} to
      * fetch new {@link WeatherForecast}
+     *
      * @param list data received from geocoding
      */
     private void updateCurrentAddress(List<Address> list) {
         if (!list.isEmpty()) {
             Address address = list.get(0);
-            StringBuilder city = new StringBuilder(address.getLocality()).append(" ").append(address.getCountryName().toString());
-            viewModel.updateCurrentLocation(new WsLocation(address.getLatitude(), address.getLongitude(), city.toString()));
+            viewModel.updateCurrentLocation(new WsLocation(address.getLatitude(), address.getLongitude(), address.getLocality()));
         } else {
             Toast.makeText(MainActivity.this, "Please enter correct city", Toast.LENGTH_LONG).show();
         }
