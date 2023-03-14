@@ -2,11 +2,9 @@
 
 # Coding Challenge: - *Weather App*
 
-**Weather App** is simple andorid app that allows users to get the Current Weather data and Forecast for next 24 hour and next week using [OpenWeatherMap](https://openweathermap.org/api/one-call-3).
+**Weather App** is a simple andorid app that allows users to get the Current Weather data and Forecast for next 24 hour and next week using [OpenWeatherMap](https://openweathermap.org/api/one-call-3).
 
-Submitted by: **Tanmay Thakar**
-
-Time spent: **~7** hours spent in total for the first phase
+Time spent: **~7** hours spent in total for the first phase, Still in progress
 
 ## User Stories
 
