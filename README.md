@@ -2,7 +2,7 @@
 
 # Coding Challenge: - *Weather App*
 
-**Weather App** that allows use to get the Current Weather data and Forecast for next 24 hour and next week
+**Weather App** that allows users to get the Current Weather data and Forecast for next 24 hour and next week
 
 Submitted by: **Tanmay Thakar**
 
@@ -19,8 +19,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/PVTkrZz.gif' 
-title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![](https://github.com/tanmaythakar4/20230311-TanmayThakar-Chase/blob/main/WeatherApp.gif)
 
 
 ## Notes
