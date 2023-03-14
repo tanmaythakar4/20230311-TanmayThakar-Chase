@@ -1,5 +1,7 @@
 package com.dynamo.jpmc.weatherapp.network;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 

@@ -30,6 +30,7 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     private List<Hourly> hourlyWeather = new ArrayList<>();
 
     public void setData(@NonNull List<Hourly> hourlyWeather) {
+        // Sort the hourly weather data in ascending and Filter with current time, no need to show data from history
         this.hourlyWeather = hourlyWeather.stream().filter(hourly -> (hourly.getDt()*1000)>=System.currentTimeMillis()).collect(Collectors.toList());
         Collections.sort(hourlyWeather, (h1, h2) -> (new Date(h2.getDt() * 1000).compareTo(new Date(h1.getDt() * 1000))));
         notifyDataSetChanged();

@@ -22,34 +22,34 @@
             android:id="@+id/time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{item.formattedDate}"
-            tool:text="01"
             android:gravity="center"
+            android:text="@{item.formattedDate}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tool:text="01" />
 
         <ImageView
             android:id="@+id/weatherIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            app:weatherIconUrl="@{item.weather.get(0).icon}"
+            android:layout_width="@dimen/small_icon_size"
+            android:layout_height="@dimen/small_icon_size"
+            android:layout_marginTop="@dimen/field_margin"
+            android:src="@drawable/ic_humidity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/time"
-            android:src="@drawable/ic_humidity"/>
+            app:weatherIconUrl="@{item.weather.get(0).icon}" />
 
         <TextView
             android:id="@+id/temperature"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:formatTemperature="@{item.temp}"
-            tool:text="32c"
+            android:layout_marginTop="@dimen/field_margin"
             android:gravity="center"
+            app:formatTemperature="@{item.temp}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weatherIcon" />
+            app:layout_constraintTop_toBottomOf="@+id/weatherIcon"
+            tool:text="32c" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

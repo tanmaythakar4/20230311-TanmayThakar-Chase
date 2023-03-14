@@ -2,6 +2,7 @@ package com.dynamo.jpmc.weatherapp.ui.current;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class WeatherHomeFragment extends Fragment {
     WeeklyWeatherAdapter weeklyWeatherAdapter;
     HourlyWeatherAdapter hourlyWeatherAdapter;
     FragmentWeatherHomeBinding binding;
-
+    WeatherViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,9 +47,14 @@ public class WeatherHomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         setupHourlyAdapter(requireContext());
         setupWeeklyAdapter(requireContext());
-        initViewModel();
+        viewModel = new ViewModelProvider(requireActivity()).get(WeatherViewModel.class);
+        initWeatherForecast();
     }
 
+    /**
+     * Setup a Recyclerview to show the weekly weather forecast data
+     * @param context
+     */
     private void setupWeeklyAdapter(@NonNull Context context) {
         DividerItemDecoration decoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         binding.weeklyRecyclerView.addItemDecoration(decoration);
@@ -59,28 +65,37 @@ public class WeatherHomeFragment extends Fragment {
         binding.weeklyRecyclerView.setAdapter(weeklyWeatherAdapter);
     }
 
+    /**
+     * Setup a Recyclerview to show the hourly weather forecast data
+     * @param context
+     */
     private void setupHourlyAdapter(@NonNull Context context) {
         binding.hourlyRecyclerView.setHasFixedSize(true);
         binding.hourlyRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         binding.hourlyRecyclerView.setAdapter(hourlyWeatherAdapter = new HourlyWeatherAdapter());
     }
 
-    private void initViewModel() {
-        WeatherViewModel viewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
-        viewModel.weatherForecastData.observe(requireActivity(), new Observer<Resource<WeatherForecast>>() {
-            @Override
-            public void onChanged(Resource<WeatherForecast> weatherForecastResource) {
-                if (weatherForecastResource.status == Status.SUCCESS) {
-                    binding.setItem(weatherForecastResource.data);
-                    hourlyWeatherAdapter.setData(weatherForecastResource.data.getHourly());
-                    weeklyWeatherAdapter.setData(weatherForecastResource.data.getDaily());
-                } else if (weatherForecastResource.status == Status.LOADING) {
-                    Toast.makeText(requireActivity(), "Loading", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(requireActivity(), weatherForecastResource.message, Toast.LENGTH_SHORT).show();
-                }
+    private void initWeatherForecast() {
+        viewModel.weatherForecastData.observe(requireActivity(), weatherForecastResource -> {
+            if (weatherForecastResource.status == Status.SUCCESS) {
+                binding.root.setVisibility(View.VISIBLE);
+                binding.loading.setVisibility(View.GONE);
+                binding.setItem(weatherForecastResource.data);
+                binding.setLocation(viewModel.getWsLocation());
+                hourlyWeatherAdapter.setData(weatherForecastResource.data.getHourly());
+                weeklyWeatherAdapter.setData(weatherForecastResource.data.getDaily());
+            } else if (weatherForecastResource.status == Status.LOADING) {
+                binding.root.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.VISIBLE);
+                Toast.makeText(requireActivity(), "Loading", Toast.LENGTH_SHORT).show();
+            } else {
+                binding.root.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.VISIBLE);
+                Toast.makeText(requireActivity(), weatherForecastResource.message, Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
     }
 }

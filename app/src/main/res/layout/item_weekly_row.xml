@@ -37,8 +37,8 @@
 
         <ImageView
             android:id="@+id/weatherIcon"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="@dimen/small_icon_size"
+            android:layout_height="@dimen/small_icon_size"
             app:weatherIconUrl="@{item.weather.get(0).icon}"
             app:layout_constraintBottom_toBottomOf="@+id/temperature"
             app:layout_constraintEnd_toEndOf="parent"

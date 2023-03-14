@@ -36,8 +36,8 @@ public class WeeklyWeatherAdapter extends RecyclerView.Adapter<WeeklyWeatherAdap
     }
 
     public void setData(@NonNull List<Daily> weeklyWeather) {
+        // Sort the weekly weather data in ascending and Filter with current time
         this.weeklyWeather = weeklyWeather.stream().filter(hourly -> (hourly.getDt() * 1000) > System.currentTimeMillis()).collect(Collectors.toList());
-        ;
         Collections.sort(weeklyWeather, (d1, d2) -> (new Date(d1.getDt() * 1000).compareTo(new Date(d2.getDt() * 1000))));
         notifyDataSetChanged();
     }

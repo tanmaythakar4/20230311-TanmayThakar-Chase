@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.dynamo.jpmc.weatherapp.model.WeatherForecast;
+import com.dynamo.jpmc.weatherapp.model.WsLocation;
 import com.dynamo.jpmc.weatherapp.network.WeatherRepository;
 import com.dynamo.jpmc.weatherapp.util.Resource;
 
@@ -19,17 +20,39 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class WeatherViewModel extends ViewModel {
 
     public MutableLiveData<Resource<WeatherForecast>> weatherForecastData;
+    private WsLocation wsLocation;
+    public
     WeatherRepository weatherRepository;
 
     @Inject
     public WeatherViewModel(WeatherRepository weatherRepository) {
         this.weatherRepository = weatherRepository;
         this.weatherForecastData = new MutableLiveData<>();
-        getWeatherForecastData(41.640640,-72.683113);
+        updateCurrentLocation(getWsLocation());
     }
 
-    public void getWeatherForecastData(double lat, double lng) {
+
+    public void updateCurrentLocation(WsLocation wsLocation) {
+        this.wsLocation = wsLocation;
+        getWeatherForecastData();
+    }
+
+    public WsLocation getWsLocation() {
+        if (wsLocation == null) {
+            wsLocation = new WsLocation(41.640640, -72.683113, "Rocky Hill, USA");
+        }
+        return wsLocation;
+    }
+
+    public void getWeatherForecastData() {
         weatherForecastData.postValue(Resource.loading(null));
-        weatherRepository.getWeatherForecast(lat, lng, weatherForecastData);
+        weatherRepository.getWeatherForecast(getWsLocation().getLat(), getWsLocation().getLon(), weatherForecastData);
+    }
+
+    /**
+     * Re fetch the current {@link WeatherForecast}
+     */
+    public void refreshWeather() {
+        getWeatherForecastData();
     }
 }
